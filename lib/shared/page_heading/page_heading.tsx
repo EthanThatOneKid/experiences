@@ -1,10 +1,12 @@
+import { A, H1, STRONG } from "@fartlabs/htx";
+
 export function PageHeading(props: { title: string }) {
   return (
-    <h1>
-      <a href="https://acmcsuf.com/teams#oss">
-        <strong style="color: #21d19f;">Open Source Software</strong>
-      </a>{" "}
+    <H1>
+      <A href="https://acmcsuf.com/teams#oss">
+        <STRONG style="color: #21d19f;">Open Source Software</STRONG>
+      </A>{" "}
       {props.title}
-    </h1>
+    </H1>
   );
 }

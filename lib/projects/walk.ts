@@ -1,4 +1,4 @@
-import { expandGlob } from "#/deps.ts";
+import { expandGlob } from "@std/fs";
 import { parseProject } from "./projects.ts";
 
 export async function* walkProjects(glob: string | URL) {

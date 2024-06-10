@@ -1,5 +1,20 @@
-import { A, B, LI, TABLE, TD, TH, TR, UL } from "@fartlabs/htx";
 import { render } from "@deno/gfm";
+import {
+  A,
+  ARTICLE,
+  B,
+  FOOTER,
+  LI,
+  MAIN,
+  META,
+  TABLE,
+  TD,
+  TH,
+  TITLE,
+  TR,
+  UL,
+} from "@fartlabs/htx";
+import { TextNode } from "@fartlabs/htx/special";
 import { withLayout } from "#/lib/shared/layout/mod.ts";
 import { PageHeading } from "#/lib/shared/page_heading/mod.ts";
 import type { Project } from "./projects.ts";
@@ -35,7 +50,7 @@ function ParticipantsComponent(props: { participants: string[] }) {
         <LI>
           <ParticipantComponent participant={participant} />
         </LI>
-      ))}
+      )).join("")}
     </UL>
   );
 }
@@ -108,29 +123,15 @@ function ProjectMetadataTableComponent(props: { project: Project }) {
 function ProjectPageComponent(props: { baseURL: string; project: Project }) {
   const html = render(props.project.md, { baseUrl: props.baseURL });
   return (
-    <main>
-      <Helmet>
-        <html lang="en" amp />
-        <title>
-          {props.project.attrs?.title} - Open Source Software projects
-        </title>
-        <meta
-          name="description"
-          content={props.project.attrs?.description}
-        />
-      </Helmet>
-
-      <article
-        class="markdown-body"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+    <MAIN>
+      <ARTICLE class="markdown-body">{html}</ARTICLE>
 
       <ProjectMetadataTableComponent project={props.project} />
 
-      <footer>
-        <a href="../projects.html">↩ Projects</a>
-      </footer>
-    </main>
+      <FOOTER>
+        <A href="../projects.html">↩ Projects</A>
+      </FOOTER>
+    </MAIN>
   );
 }
 
@@ -150,38 +151,46 @@ function ProjectsTableComponent(props: { projects: Project[] }) {
           <TD>{project.attrs?.labels?.join(", ")}</TD>
           <TD>{project.attrs?.participants?.length ?? "N/A"}</TD>
         </TR>
-      ))}
+      )).join("")}
     </TABLE>
   );
 }
 
 export function ProjectsPageComponent(props: { projects: Project[] }) {
   return (
-    <main>
-      <Helmet>
-        <html lang="en" amp />
-        <title>Open Source Software projects</title>
-        <meta
-          name="description"
-          content="List of initiatives owned by the Open Source Software team."
-        />
-      </Helmet>
-
+    <MAIN>
       <PageHeading title="projects" />
       <ProjectsTableComponent projects={props.projects} />
-      <footer>
-        <a href="./index.html">↩ Docs</a>
-      </footer>
-    </main>
+
+      <FOOTER>
+        <A href="./index.html">↩ Docs</A>
+      </FOOTER>
+    </MAIN>
   );
 }
 
 export function renderProjectsPageHTML(projects: Project[]) {
-  return withLayout(<ProjectsPageComponent projects={projects} />);
+  return withLayout(
+    <TextNode>
+      <TITLE>Open Source Software projects</TITLE>
+      <META
+        name="description"
+        content="List of initiatives owned by the Open Source Software team."
+      />
+    </TextNode>,
+    <ProjectsPageComponent projects={projects} />,
+  );
 }
 
 export function renderProjectPageHTML(project: Project, baseURL = "/") {
   return withLayout(
+    <TextNode>
+      <TITLE>{project.attrs?.title} | Open Source Software projects</TITLE>
+      <META
+        name="description"
+        content={project.attrs?.description ?? "Open Source Software project"}
+      />
+    </TextNode>,
     <ProjectPageComponent project={project} baseURL={baseURL} />,
   );
 }

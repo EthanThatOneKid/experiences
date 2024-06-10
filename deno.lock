@@ -7,9 +7,14 @@
       "jsr:@fartlabs/ht@^0.0.5": "jsr:@fartlabs/ht@0.0.5",
       "jsr:@fartlabs/htx@^0.0.3": "jsr:@fartlabs/htx@0.0.3",
       "jsr:@fartlabs/jsonx@^0.0.10": "jsr:@fartlabs/jsonx@0.0.10",
+      "jsr:@std/assert@^0.226.0": "jsr:@std/assert@0.226.0",
+      "jsr:@std/cli@^0.224.6": "jsr:@std/cli@0.224.6",
       "jsr:@std/collections@^0.220.1": "jsr:@std/collections@0.220.1",
       "jsr:@std/collections@^1.0.0-rc.1": "jsr:@std/collections@1.0.0-rc.1",
       "jsr:@std/front-matter@^0.224.2": "jsr:@std/front-matter@0.224.2",
+      "jsr:@std/fs@^0.229.2": "jsr:@std/fs@0.229.2",
+      "jsr:@std/path@1.0.0-rc.1": "jsr:@std/path@1.0.0-rc.1",
+      "jsr:@std/path@^0.225.2": "jsr:@std/path@0.225.2",
       "jsr:@std/toml@^0.224.1": "jsr:@std/toml@0.224.1",
       "jsr:@std/yaml@^0.224.1": "jsr:@std/yaml@0.224.1",
       "npm:github-slugger@^2.0": "npm:github-slugger@2.0.0",
@@ -56,6 +61,12 @@
           "jsr:@std/collections@^0.220.1"
         ]
       },
+      "@std/assert@0.226.0": {
+        "integrity": "0dfb5f7c7723c18cec118e080fec76ce15b4c31154b15ad2bd74822603ef75b3"
+      },
+      "@std/cli@0.224.6": {
+        "integrity": "98d7e17a70c1c24980baa2b9a511b29e0a460e7a3b8e3d4e220979d77d5f348e"
+      },
       "@std/collections@0.220.1": {
         "integrity": "5820a8d7f69ef93af6807249dfa4be5b97ebf8654c587826612744cf7ae57ef2"
       },
@@ -68,6 +79,21 @@
           "jsr:@std/toml@^0.224.1",
           "jsr:@std/yaml@^0.224.1"
         ]
+      },
+      "@std/fs@0.229.2": {
+        "integrity": "c15dd65678fc3b9e5465b83cfbb1f3bb34d158ef4347f2afa0b759cce8c51bd9",
+        "dependencies": [
+          "jsr:@std/path@1.0.0-rc.1"
+        ]
+      },
+      "@std/path@0.225.2": {
+        "integrity": "0f2db41d36b50ef048dcb0399aac720a5348638dd3cb5bf80685bf2a745aa506",
+        "dependencies": [
+          "jsr:@std/assert@^0.226.0"
+        ]
+      },
+      "@std/path@1.0.0-rc.1": {
+        "integrity": "b8c00ae2f19106a6bb7cbf1ab9be52aa70de1605daeb2dbdc4f87a7cbaf10ff6"
       },
       "@std/toml@0.224.1": {
         "integrity": "c364b9ca3b18207223c4e2a1f652ef2970ff80967f7575ddf89b6b0565a17148",

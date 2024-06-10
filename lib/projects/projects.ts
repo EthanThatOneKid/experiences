@@ -1,4 +1,5 @@
-import { extract, test } from "@std/front-matter";
+import { test } from "@std/front-matter";
+import { extract } from "@std/front-matter/any";
 
 export interface ProjectAttrs {
   title?: string;
