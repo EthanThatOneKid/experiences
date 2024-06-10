@@ -1,4 +1,5 @@
-import { Helmet, render } from "#/deps.ts";
+import { A, B, LI, TABLE, TD, TH, TR, UL } from "@fartlabs/htx";
+import { render } from "@deno/gfm";
 import { withLayout } from "#/lib/shared/layout/mod.ts";
 import { PageHeading } from "#/lib/shared/page_heading/mod.ts";
 import type { Project } from "./projects.ts";
@@ -21,7 +22,7 @@ function makeRepositoryURL(repository: string) {
 function ParticipantComponent(props: { participant: string }) {
   if (props.participant.startsWith("@")) {
     const url = `https://github.com/${props.participant.slice(1)}`;
-    return <a href={url}>{props.participant}</a>;
+    return <A href={url}>{props.participant}</A>;
   }
 
   return props.participant;
@@ -29,78 +30,78 @@ function ParticipantComponent(props: { participant: string }) {
 
 function ParticipantsComponent(props: { participants: string[] }) {
   return (
-    <ul>
+    <UL>
       {props.participants.map((participant) => (
-        <li>
+        <LI>
           <ParticipantComponent participant={participant} />
-        </li>
+        </LI>
       ))}
-    </ul>
+    </UL>
   );
 }
 
 function GitHubRepositoryComponent(props: { repository: string }) {
   return (
-    <a
+    <A
       href={makeRepositoryURL(props.repository)}
     >
       {makeRepositoryURL(props.repository)}
-    </a>
+    </A>
   );
 }
 
 function ProjectMetadataTableComponent(props: { project: Project }) {
   return (
-    <table>
-      <tr>
-        <td colspan="2">
-          <b>Metadata</b>
-        </td>
-      </tr>
+    <TABLE>
+      <TR>
+        <TD colspan="2">
+          <B>Metadata</B>
+        </TD>
+      </TR>
 
       {props.project.attrs?.title && (
-        <tr>
-          <td>Title</td>
-          <td>{props.project.attrs.title}</td>
-        </tr>
+        <TR>
+          <TD>Title</TD>
+          <TD>{props.project.attrs.title}</TD>
+        </TR>
       )}
 
       {props.project.attrs?.description && (
-        <tr>
-          <td>Description</td>
-          <td>{props.project.attrs.description}</td>
-        </tr>
+        <TR>
+          <TD>Description</TD>
+          <TD>{props.project.attrs.description}</TD>
+        </TR>
       )}
 
       {props.project.attrs?.labels?.length && (
-        <tr>
-          <td>Labels</td>
-          <td>{props.project.attrs.labels.join(", ")}</td>
-        </tr>
+        <TR>
+          <TD>Labels</TD>
+          <TD>{props.project.attrs.labels.join(", ")}</TD>
+        </TR>
       )}
 
       {props.project.attrs?.participants?.length && (
-        <tr>
-          <td>Participants</td>
-          <td>
+        <TR>
+          <TD>Participants</TD>
+          <TD>
             <ParticipantsComponent
               participants={props.project.attrs.participants}
             />
-          </td>
-        </tr>
+          </TD>
+        </TR>
       )}
 
       {props.project.attrs?.repository && (
-        <tr>
-          <td>GitHub repository</td>
-          <td>
+        <TR>
+          <TD>GitHub repository</TD>
+          <TD>
             <GitHubRepositoryComponent
               repository={props.project.attrs.repository}
             />
-          </td>
-        </tr>
+          </TD>
+        </TR>
       )}
-    </table>
+    </TABLE>
   );
 }
 
@@ -135,22 +136,22 @@ function ProjectPageComponent(props: { baseURL: string; project: Project }) {
 
 function ProjectsTableComponent(props: { projects: Project[] }) {
   return (
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Labels</th>
-        <th>Participants</th>
-      </tr>
+    <TABLE>
+      <TR>
+        <TH>Title</TH>
+        <TH>Labels</TH>
+        <TH>Participants</TH>
+      </TR>
       {props.projects.map((project) => (
-        <tr>
-          <td>
-            <a href={`projects/${project.id}.html`}>{project.attrs?.title}</a>
-          </td>
-          <td>{project.attrs?.labels?.join(", ")}</td>
-          <td>{project.attrs?.participants?.length ?? "N/A"}</td>
-        </tr>
+        <TR>
+          <TD>
+            <A href={`projects/${project.id}.html`}>{project.attrs?.title}</A>
+          </TD>
+          <TD>{project.attrs?.labels?.join(", ")}</TD>
+          <TD>{project.attrs?.participants?.length ?? "N/A"}</TD>
+        </TR>
       ))}
-    </table>
+    </TABLE>
   );
 }
 
