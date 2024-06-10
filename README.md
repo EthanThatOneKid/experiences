@@ -1,22 +1,21 @@
-# docs
+# Experiences
 
-This is a static documentation site for the
-[**@acmcsufoss**](https://github.com/acmcsufoss) organization.
+This is a static documentation site for the professional experiences of the user
+[**@EthanThatOneKid**](https://github.com/EthanThatOneKid).
 
-The
-[Open Source Software team documentation website](https://acmcsufoss.github.io/docs)
-(<https://acmcsuf.com/oss-docs>) enables visitors to track active projects, find
-contribution opportunities, and access workshop resources.
+Ethan is the founder of communities such as
+[**@FartLabs**](https://github.com/FartLabs),
+[**@acmcsufoss**](https://github.com/acmcsufoss), and
+[**@vaqcoders**](https://github.com/vaqcoders).
+
+The [website](https://ethanthatonekid.github.io/experiences) enables visitors to
+view Ethan's projects, workshops, and other professional experiences.
 
 ## Contributing
 
-We welcome contributions from everyone!
-
-### Projects
-
-If you would like to contribute to the projects documentation, the markdown
-files are located in the `projects` directory. One markdown file represents one
-project. The file name should be a project ID with the `.md` extension.
+If you would like to contribute to the documentation, the markdown files are
+located in the `experiences` directory. One markdown file represents one
+experience. The file name should be a project ID with the `.md` extension.
 
 ```md
 ---
@@ -33,36 +32,6 @@ labels: ["svelte", "typescript"]
 Official website of CSUF's ACM club.
 ```
 
-### Workshops
-
-If you would like to contribute to the workshops documentation, the markdown
-files are located in the `workshops` directory. One markdown file represents one
-series of workshops. The file name should be a workshop series ID with the `.md`
-extension.
-
-```md
----
-workshops:
-  - title: "Spring 2024 Open Source Software Kickoff"
-    description: "Launch into the vast expanse of collaborative development, exploring new frontiers and innovating together!"
-    timestamp: "2024-02-08"
-    url: "https://acmcsuf.com/spring24-oss-kickoff"
-  - title: "Making First Contributions"
-    description: "Make your first open source contribution and learn the basics of Git and GitHub."
-    timestamp: "2024-02-15"
-    url: "https://acmcsuf.com/1st-slides"
-  - title: "How to win FullyHacks"
-    description: "How to win a hackathon, and how to win FullyHacks in particular."
-    timestamp: "2024-02-22"
-    url: "https://acmcsuf.com/winning-fh"
----
-
-# Spring 2024 workshops
-
-Workshops are a great way to learn new skills and meet new people. Here are the
-workshops we have hosted during the Spring 2024 semester.
-```
-
 ## Development
 
 Make sure to install Deno:
@@ -71,13 +40,13 @@ Make sure to install Deno:
 Build the project:
 
 ```sh
-deno task build
+deno task generate
 ```
 
 Build the project in development mode:
 
 ```sh
-deno task dev
+deno task watch
 ```
 
 Serve the static site:
@@ -105,4 +74,4 @@ deno task check
 
 ---
 
-Maintained with 💚 [**@acmcsufoss**](https://github.com/acmcsufoss)
+Documented with ❤️ by [**@EthanThatOneKid**](https://github.com/EthanThatOneKid)

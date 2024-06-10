@@ -1,4 +1,4 @@
-import { extract, test } from "#/deps.ts";
+import { extract, test } from "@std/front-matter";
 
 export interface ProjectAttrs {
   title?: string;

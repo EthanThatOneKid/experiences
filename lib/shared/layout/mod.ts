@@ -1,1 +1,1 @@
-export * from "./with_layout.ts";
+export * from "./with_layout.tsx";

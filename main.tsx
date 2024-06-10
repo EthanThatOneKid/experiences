@@ -1,19 +1,22 @@
-import { copy, Helmet, parseArgs } from "#/deps.ts";
+import { join } from "@std/path";
+import { copy } from "@std/fs";
+import { parseArgs } from "@std/cli";
+import { TextNode } from "@fartlabs/htx/special";
+import { A, LI, MAIN, META, P, STRONG, TITLE, UL } from "@fartlabs/htx";
 import type { Project } from "#/lib/projects/mod.ts";
 import {
   renderProjectPageHTML,
   renderProjectsPageHTML,
   walkProjects,
 } from "#/lib/projects/mod.ts";
+import type { WorkshopGroup } from "#/lib/workshops/mod.ts";
 import {
   renderWorkshopGroupPageHTML,
   renderWorkshopGroupsPageHTML,
   walkWorkshopGroups,
-  type WorkshopGroup,
 } from "#/lib/workshops/mod.ts";
 import { withLayout } from "#/lib/shared/layout/mod.ts";
 import { PageHeading } from "#/lib/shared/page_heading/mod.ts";
-import { join } from "#/deps.ts";
 
 if (import.meta.main) {
   await main(Deno.args);
@@ -31,7 +34,7 @@ async function main(args: string[]) {
     },
     default: {
       indir: "./",
-      outdir: "build",
+      outdir: "generate",
       staticdir: "static",
     },
   });
@@ -106,32 +109,31 @@ async function main(args: string[]) {
   await Deno.writeTextFile(
     `${flags.outdir}/index.html`,
     withLayout(
-      <main>
-        <Helmet>
-          <html lang="en" amp />
-          <title>Open Source Software docs</title>
-          <meta
-            name="description"
-            content="ACM at CSUF Open Source Software team documentation"
-          />
-        </Helmet>
+      <TextNode>
+        <TITLE>@EthanThatOneKid Experience</TITLE>
+        <META
+          name="description"
+          content="Ethan's personal experience and projects"
+        />
+      </TextNode>,
+      <MAIN>
         <PageHeading title="docs" />
-        <p>
+        <P>
           This is a static documentation site for the{" "}
-          <a href="https://github.com/acmcsufoss">
-            <strong>@acmcsufoss</strong>
-          </a>{" "}
+          <A href="https://github.com/acmcsufoss">
+            <STRONG>@acmcsufoss</STRONG>
+          </A>{" "}
           organization.
-          <ul>
-            <li>
-              <a href="projects.html">Projects</a>
-            </li>
-            <li>
-              <a href="workshops.html">Workshops</a>
-            </li>
-          </ul>
-        </p>
-      </main>,
+          <UL>
+            <LI>
+              <A href="projects.html">Projects</A>
+            </LI>
+            <LI>
+              <A href="workshops.html">Workshops</A>
+            </LI>
+          </UL>
+        </P>
+      </MAIN>,
     ),
   );
 }

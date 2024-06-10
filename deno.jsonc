@@ -1,17 +1,24 @@
 {
   "tasks": {
-    "build": "deno run -A main.tsx",
+    "generate": "deno run -A main.tsx",
     "check": "deno check main.tsx",
-    "dev": "deno run -A --watch main.tsx",
-    "serve": "deno run -A https://deno.land/std/http/file_server.ts build"
+    "watch": "deno run -A --watch main.tsx",
+    "serve": "deno run -A https://deno.land/std/http/file_server.ts generated"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "nano_jsx"
+    "jsxImportSource": "@fartlabs/jsonx"
   },
   "imports": {
     "#/": "./",
-    "nano_jsx/jsx-runtime": "https://deno.land/x/nano_jsx@v0.1.0/jsx-runtime/index.ts"
+    "@deno/gfm": "jsr:@deno/gfm@^0.8.2",
+    "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.3",
+    "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.10",
+    "@std/cli": "jsr:@std/cli@^0.224.6",
+    "@std/front-matter": "jsr:@std/front-matter@^0.224.2",
+    "@std/fs": "jsr:@std/fs@^0.229.2",
+    "@std/path": "jsr:@std/path@^0.225.2",
+    "@std/yaml": "jsr:@std/yaml@^0.224.1"
   },
-  "exclude": ["build"]
+  "exclude": ["generated"]
 }
