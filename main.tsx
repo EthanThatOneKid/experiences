@@ -1,16 +1,12 @@
 import { join } from "@std/path";
 import { copy } from "@std/fs";
 import { parseArgs } from "@std/cli";
-import { TextNode } from "@fartlabs/htx/special";
-import { A, LI, MAIN, META, P, STRONG, TITLE, UL } from "@fartlabs/htx";
 import type { Project } from "#/lib/projects/mod.ts";
 import {
   renderProjectPageHTML,
   renderProjectsPageHTML,
   walkProjects,
 } from "#/lib/projects/mod.ts";
-import { withLayout } from "#/lib/shared/layout/mod.ts";
-import { PageHeading } from "#/lib/shared/page_heading/mod.ts";
 
 if (import.meta.main) {
   await main(Deno.args);
@@ -54,41 +50,13 @@ async function main(args: string[]) {
     );
   }
 
+  // Render index page.
   const projectsIndexHTML = await renderProjectsPageHTML(projects);
   await Deno.writeTextFile(
-    join(flags.outdir, "projects.html"),
+    join(flags.outdir, "index.html"),
     projectsIndexHTML,
   );
 
   // Copy contents of static directory to outdir.
   await copy(flags.staticdir, flags.outdir, { overwrite: true });
-
-  // Render index page.
-  await Deno.writeTextFile(
-    `${flags.outdir}/index.html`,
-    withLayout(
-      <TextNode>
-        <TITLE>@EthanThatOneKid Experience</TITLE>
-        <META
-          name="description"
-          content="Ethan's personal experience and projects"
-        />
-      </TextNode>,
-      <MAIN>
-        <PageHeading title="docs" />
-        <P>
-          This is a static documentation site for the{" "}
-          <A href="https://github.com/acmcsufoss">
-            <STRONG>@acmcsufoss</STRONG>
-          </A>{" "}
-          organization.
-          <UL>
-            <LI>
-              <A href="projects.html">Projects</A>
-            </LI>
-          </UL>
-        </P>
-      </MAIN>,
-    ),
-  );
 }
