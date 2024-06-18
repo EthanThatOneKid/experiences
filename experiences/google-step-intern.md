@@ -10,7 +10,7 @@ highlights:
 Contribute to C++ BigTable access layer, Java middleware, Angular frontend, integration testing, and technical documentation to help developers maintain the project."
   - "Organize various meetings to influence product launch including Bug Bash where team members meet to help catalog bugs before launch and a Launch Readiness meeting to ensure all stakeholders are prepared for the launch. Published internal technical documentation to help developers maintain our project's features."
   - "Initiate plan to improve the code health of various modules by creating a plan and contributions to combat growing tech debt; help contributed to by multiple engineers."
-labels: ["C++", "Java", "Angular", "BigTable", "Google Cloud Platform", "Software Engineering", "Internship"]
+labels: ["C++", "Java", "Angular", "BigTable", "Google Cloud Platform", "Software Engineering", "Internship", "Google", "Technical Documentation", "Code Health", "Product Launch", "Bug Bash", "Launch Readiness"]
 ---
 
 # Google STEP Internship
