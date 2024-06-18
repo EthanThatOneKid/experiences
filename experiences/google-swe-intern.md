@@ -7,7 +7,7 @@ endDate: "2022-08"
 highlights:
   - "Develop software for Google Dataplex UI team, test and review code, and present my project results to engineers."
   - "Design and implement a reactive UI state configuration tool to streamline Dataplex Action UI testing in Angular and RxJS environments. Tool helps engineers to easily configure and test UI states."
-labels: ["Software Engineering", "Internship", "Google", "Angular", "RxJS", "TypeScript", "Testing", "UI", "Design"]
+labels: ["Software Engineering", "Internship", "Google Cloud Platform", "Angular", "RxJS", "TypeScript", "Testing", "UI", "Design"]
 ---
 
 # Google SWE Internship
