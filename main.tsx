@@ -29,6 +29,9 @@ async function main(args: string[]) {
     },
   });
 
+  // Create output directory.
+  await Deno.mkdir(flags.outdir, { recursive: true });
+
   // Render experiences hypermedia.
   const experiences: Experience[] = [];
   for await (

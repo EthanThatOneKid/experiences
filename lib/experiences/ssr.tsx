@@ -84,7 +84,7 @@ function ExperiencePageComponent(
       <ExperienceMetadataTableComponent experience={props.experience} />
 
       <FOOTER>
-        <A href="..">↩ Experiences</A>
+        <A href=".">↩ Experiences</A>
       </FOOTER>
     </MAIN>
   );
