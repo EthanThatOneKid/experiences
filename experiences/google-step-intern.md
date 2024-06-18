@@ -19,6 +19,6 @@ labels: ["C++", "Java", "Angular", "BigTable", "Google Cloud Platform", "Softwar
 
 I worked as a STEP Intern at Google for the Summer 2021 term. I was part of the
 Software Engineering Practicum (STEP) program, which is a 12-week internship for
-first and second-year undergraduate students. I worked on a the Hotel Center
-team and developed a promotions management tool for clients to manage their
-hotel promotions.
+first and second-year undergraduate students. I worked on the Hotel Center team
+and developed a promotions management tool for partners to manage their hotel
+promotions.
