@@ -1,12 +1,12 @@
 import { join } from "@std/path";
 import { copy } from "@std/fs";
 import { parseArgs } from "@std/cli";
-import type { Project } from "#/lib/projects/mod.ts";
+import type { Experience } from "#/lib/experiences/mod.ts";
 import {
-  renderProjectPageHTML,
-  renderProjectsPageHTML,
-  walkProjects,
-} from "#/lib/projects/mod.ts";
+  renderExperiencePageHTML,
+  renderExperiencesPageHTML,
+  walkExperiences,
+} from "#/lib/experiences/mod.ts";
 
 if (import.meta.main) {
   await main(Deno.args);
@@ -29,32 +29,35 @@ async function main(args: string[]) {
     },
   });
 
-  // Create projects directory if it does not exist.
-  await Deno.mkdir(join(flags.outdir, "projects"), { recursive: true });
-
-  // Render projects assets.
-  const projects: Project[] = [];
+  // Render experiences hypermedia.
+  const experiences: Experience[] = [];
   for await (
-    const project of walkProjects(join(flags.indir, "projects", "*.md"))
+    const experience of walkExperiences(
+      join(flags.indir, "experiences", "*.md"),
+    )
   ) {
-    projects.push(project);
-    const html = renderProjectPageHTML(project, flags["base-url"]);
+    experiences.push(experience);
     await Deno.writeTextFile(
-      join(flags.outdir, "projects", `${project.id}.html`),
-      html,
+      join(flags.outdir, `${experience.id}.html`),
+      renderExperiencePageHTML(experience, flags["base-url"]),
     );
-    const json = JSON.stringify(project, null, 2);
     await Deno.writeTextFile(
-      join(flags.outdir, "projects", `${project.id}.json`),
-      json,
+      join(flags.outdir, `${experience.id}.json`),
+      JSON.stringify(experience, null, 2),
     );
   }
 
+  // Render experiences JSON.
+  await Deno.writeTextFile(
+    join(flags.outdir, "experiences.json"),
+    JSON.stringify(experiences, null, 2),
+  );
+
   // Render index page.
-  const projectsIndexHTML = await renderProjectsPageHTML(projects);
+  const experiencesIndexHTML = await renderExperiencesPageHTML(experiences);
   await Deno.writeTextFile(
     join(flags.outdir, "index.html"),
-    projectsIndexHTML,
+    experiencesIndexHTML,
   );
 
   // Copy contents of static directory to outdir.
