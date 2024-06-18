@@ -6,7 +6,7 @@ startDate: "2020-06"
 endDate: "2021-04"
 highlights:
   - "Created exciting learning resources and experiences while tutoring young, aspiring code ninjas (kids ages 6-17) in various programming skills such as typing, Scratch, Lua, JavaScript, and Python."
-labels: ["Web Development", "Open Source", "Leadership", "Mentorship", "Software Engineering"]
+labels: ["Teaching", "Mentoring", "Programming", "JavaScript", "Python", "Lua", "Scratch"]
 url:
   - "https://github.com/codeninjasgg/"
   - "https://codeninjasgg.github.io/roblox-royale-camp/"
